@@ -1,0 +1,243 @@
+{% extends "edit.html" %}
+
+{% block section %}
+
+{% if method == "picture" %}
+
+<div class="login-main">
+    <form action="/edit_picture" method="post" enctype="multipart/form-data" class="login-form">
+        {% if message %}
+            <p class="error-message">{{ message }}</p>
+        {% endif %}
+        <label>Profile Picture:</label>
+        <div class="mb-3">
+            <input type="file" class="form-control input" accept=".png, .jpg, .jpeg" name="file" id="file-input">
+        </div>
+        <input type="hidden" name="x" value="none" id="x-axis">
+        <input type="hidden" name="y" value="none" id="y-axis">
+        <input type="hidden" name="width" value="none" id="width">
+        <input type="hidden" name="height" value="none" id="height">
+        <div class="box-2">
+            <div class="result"></div>
+        </div>
+        <!-- input file -->
+        <div>
+            <div class="options hide">
+                <!--<label> Width</label>-->
+                <input type="hidden" class="img-w" value="300" min="100" max="1200" />
+            </div>
+        </div>
+        <input type="submit" class="btn btn-submit" value="CHANGE">
+    </form>
+
+    <div class="text">
+
+        {% if error_message == "missing" %}
+        <p>Oopsie! Seems like you forgot something.</p>
+        <img height="500px" src="static/images/pablo-787.png">
+
+        {% elif error_message == "match" %}
+        <p>Oopsie!</p>
+        <img height="500px" src="static/images/flame-1757.png">
+
+        {% else %}
+        <img height="500px" src="static/images/edit.gif">
+        {% endif %}
+    </div>
+
+</div>
+
+{% elif method == "password" %}
+
+<div class="login-main">
+
+    <form action="/edit_password" method="post" class="login-form">
+        <div class="form-container">
+            <h1>Reset Password</h1>
+            <div class="mb-3">
+                <input autofocus type="password" class="form-control input" name="old_password"
+                    placeholder="Old Password">
+            </div>
+            <div class="mb-3">
+                <input autofocus type="password" class="form-control input" name="new_password"
+                    placeholder="New Password">
+            </div>
+            <div class="mb-3">
+                <input autofocus type="password" class="form-control input" name="confirmation"
+                    placeholder="Confirm Password">
+            </div>
+            <input type="submit" value="SUBMIT" class="btn btn-submit">
+            {% if message %}
+            <p class="error-message">{{ message }}</p>
+            {% endif %}
+            <p><a href="/forgot_password">Forgort Password?</a></p>
+        </div>
+    </form>
+
+    <div class="text">
+        {% if error_message == "missing" %}
+        <p>Oopsie! Seems like you forgot something.</p>
+        <img height="500px" src="static/images/pablo-787.png">
+        {% elif error_message == "exists" %}
+        <p>Sorry Champ! Choose another one.</p>
+        <img height="500px" src="static/images/buddy_no_message.gif">
+        {% elif error_message == "match" %}
+        <p>Oopsie!</p>
+        <img height="500px" src="static/images/flame-1757.png">
+        {% elif error_message == "password" %}
+        <p>Make your password stronger Champ!</p>
+        <img height="500px" src="static/images/inky-safety-1.png">
+        {% else %}
+        <img height="500px" src="static/images/edit.gif">
+        {% endif %}
+    </div>
+
+</div>
+
+{% elif method == "bio" %}
+
+<div class="login-main">
+
+    <form action="/edit_bio" method="post" class="login-form" enctype="multipart/form-data">
+        {% if message %}
+        <p class="error-message">{{ message }}</p>
+        {% endif %}
+        <label class="bio-text">
+            <div>Bio:</div>
+            <div>
+                <p class="result"></p>
+            </div>
+        </label>
+        <div class="mb-3">
+            <textarea name="bio" class="form-control input set-bio"
+                placeholder="Tell us more about yourself (Optional)"></textarea>
+        </div>
+        <p class="warning"></p>
+        <input type="submit" class="btn btn-submit" value="SUBMIT">
+    </form>
+
+    <div class="text">
+        {% if error_message == "missing" %}
+        <p>Oopsie! Seems like you forgot something.</p>
+        <img height="500px" src="static/images/pablo-787.png">
+        {% else %}
+        <img height="500px" src="static/images/edit.gif">
+        {% endif %}
+    </div>
+
+</div>
+
+{% elif method == "email" %}
+
+<div class="login-main">
+
+    <form action="/edit_email" method="post" class="login-form">
+        <div class="form-container">
+            <h1>Reset Email</h1>
+            <div class="mb-3">
+                <input autofocus type="password" class="form-control input" name="password" placeholder="Password">
+            </div>
+            <div class="mb-3">
+                <input autofocus type="email" class="form-control input" name="email" placeholder="New Email">
+            </div>
+            <input type="submit" value="SUBMIT" class="btn btn-submit">
+            {% if message %}
+            <p class="error-message">{{ message }}</p>
+            {% endif %}
+            <p><a href="/forgot_password">Forgort Password?</a></p>
+        </div>
+    </form>
+
+    <div class="text">
+        {% if error_message == "missing" %}
+        <p>Oopsie! Seems like you forgot something.</p>
+        <img height="500px" src="static/images/pablo-787.png">
+        {% elif error_message == "match" %}
+        <p>Oopsie!</p>
+        <img height="500px" src="static/images/flame-1757.png">
+        {% elif error_message == "exists" %}
+        <p>Sorry Champ! Choose another one.</p>
+        <img height="500px" src="static/images/buddy_no_message.gif">
+        {% else %}
+        <img height="500px" src="static/images/edit.gif">
+        {% endif %}
+    </div>
+
+</div>
+
+{% elif method == "username" %}
+
+<div class="login-main">
+
+    <form action="/edit_username" method="post" class="login-form">
+        <div class="form-container">
+            <h1>Change Username</h1>
+            <div class="mb-3">
+                <input autofocus type="text" class="form-control input" name="username" placeholder="New Username">
+            </div>
+            <div class="mb-3">
+                <input autofocus type="password" class="form-control input" name="password" placeholder="Password">
+            </div>
+            <input type="submit" value="SUBMIT" class="btn btn-submit">
+            {% if message %}
+            <p class="error-message">{{ message }}</p>
+            {% endif %}
+            <p><a href="/forgot_password">Forgort Password?</a></p>
+        </div>
+    </form>
+
+    <div class="text">
+        {% if error_message == "missing" %}
+        <p>Oopsie! Seems like you forgot something.</p>
+        <img height="500px" src="static/images/pablo-787.png">
+        {% elif error_message == "exists" %}
+        <p>Sorry Champ! Choose another one.</p>
+        <img height="500px" src="static/images/buddy_no_message.gif">
+        {% else %}
+        <img height="500px" src="static/images/edit.gif">
+        {% endif %}
+    </div>
+
+</div>
+
+{% elif method == "edit" %}
+
+<div class="login-main">
+
+    <div class="login-form">
+        <form action="#">
+            <div class="mb-3">
+                <input type="submit" class="btn btn-submit" value="Edit Profile Picture">
+            </div>
+        </form>
+
+        <form action="#">
+            <div class="mb-3">
+                <input type="submit" class="btn btn-submit" value="Edit Username">
+            </div>
+        </form>
+
+        <form action="#">
+            <div class="mb-3">
+                <input type="submit" class="btn btn-submit" value="Edit Bio">
+            </div>
+        </form>
+
+        <form action="#">
+            <div class="mb-3">
+                <input type="submit" class="btn btn-submit" value="Edit Email">
+            </div>
+        </form>
+
+        <form action="#">
+            <div class="mb-3">
+                <input type="submit" class="btn btn-submit" value="Edit Password">
+            </div>
+        </form>
+    </div>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit Profile
+{% endblock %}
+
+{% block link1 %}
+    <!-- Use any element to open the sidenav -->
+    <span style="font-size:20px;cursor:pointer" id="openbtn">&#9776;</span>
+    <!-- <a href="javascript:void(0)" class="openbtn">&times;</a> -->
+{% endblock %}
+
+{% block main %}
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn">&times;</a>
+        <a href="/edit_picture">Profile Picture</a>
+        <a href="/edit_bio">Bio</a>
+        <a href="/edit_username">Username</a>
+        <a href="/edit_email">Email</a>
+        <a href="/edit_password">Password</a>
+    </div>
+    
+    <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+    <div id="main">
+        {% block section %}{% endblock %}
+    </div>
+
+{% endblock %}

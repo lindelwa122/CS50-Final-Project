@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block link1 %}
+    <a href="/login">Login</a>
+{% endblock %}
+
+{% block link2 %}
+    <a href="/register">Register</a>
+{% endblock %}
+
+{% block main %}
+
+    <div class="index-body">
+
+        <section>
+
+            <div class="container">
+                <div class="row">
+    
+                    <div class="col-lg-6">
+                        <img src="static/images/Living.svg" alt="logo">
+                    </div>
+    
+                    <div class="col-lg-6 col-sm-12 v-align-center-1">
+                       <p class="v-align-center-2 intro">Dreams do come true.</p> 
+                    </div>
+    
+                </div>
+            </div>
+            
+        </section>
+
+        <section class="why-us">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+
+                        <p class="title">Why Us?</p>
+                        
+                        <p>
+                            Living Dreams is a web application designed to help you achieve your dreams and goals faster and help you when you face difficulties. You will learn from people who have taken the same journey as you, and you will get to know what obstacles did they face and how did they overcome them. You can also help others by posting informative content and by sharing tips. We continue developing this application and ensure you have a fantastic journey.
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+           
+            
+        </section>
+
+        <section class="link">
+            <div class="btn"><a href="/authors">About the Authors</a></div>
+        </section>
+
+        <section class="login_register">
+
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-6 col-sm-12 align-center">
+                        <div class="wrapper">
+                            <div class="btn"><a href="/register">Register</a></div>
+                            <div class="btn"><a href="/login">Login</a></div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-sm-12 v-align-center-1">
+                        <p class="v-align-center-2 intro">Start your journey with us.</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+        
+    </div>
+
+{% endblock %}

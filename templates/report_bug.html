@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block link1 %}
+    <a href="/privacy_policy">Privacy Policy</a>
+{% endblock %}
+
+{% block main %}
+
+    <div class="report-bug-wrapper">
+
+        <form action="/report_bug" method="post">
+            <div class="mb-3">
+                <textarea class="form-control" placeholder="Describe the bug here:" name="bug"></textarea>
+            </div>
+            <input type="submit" value="SUBMIT" class="btn">
+        </form>
+
+        {% if message %}
+            <p class="error-message">{{ message }}</p>
+        {% endif %}
+        
+        {% if success %}
+            <div class="report-message">
+                <div class="modal" tabindex="-1">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                        <p>Thank you. Your feedback means a lot to us.</p>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary dismiss" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary proceed">Proceed to your profile</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    
+        
+    </div>
+
+{% endblock %}

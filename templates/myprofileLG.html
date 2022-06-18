@@ -1,0 +1,133 @@
+{% extends "home.html" %}
+
+{% block main %}
+
+<div class="home-main large-dv">
+
+    <div class="route-container">
+        <div class="route-wrapper">
+            <a href="/journeys"><i class="bi bi-house-door"></i></a>
+            <a href="/search"><i class="bi bi-search"></i></a>
+            <a href="/tips"><i class="bi bi-lightbulb"></i></a>
+            <a href="/challenges"><i class="bi bi-lock"></i></a>
+            <a href="/post"><i class="bi bi-grid-3x3"></i></a>
+        </div>
+    </div>
+
+    <section class="profile-img-container v-align-center-1">
+        <img class="profile-img v-align-center-2" src="static/uploads/{{ user['image'] }}" alt="profile image" />
+    </section>
+
+    <section class="user-info-bg text-truncate">
+        <span class="username">{{ user['username'] }}</span><br>
+        <span class="bio">{{ user['bio'] }}</span>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col text-truncate">
+                {{ challenge['level'] | challenge }}DaysOf{{ challenge['name']}}
+                </div>
+                <div class="vr"></div>
+                <div class="col text-truncate">
+                Day: {{ user['started_on'] | day }}/{{ challenge['level'] | challenge }}
+                </div>
+                <div class="vr"></div>
+                <div class="col text-truncate">
+                {{ hours }} hours completed
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="btn btn-primary home-btn btn-lg text-truncate" tabindex="-1" role="button" aria-disabled="false">{{ followers }} Followers</div>
+                </div>
+
+                <div class="col">
+                    <div class="btn btn-primary home-btn btn-lg text-truncate" tabindex="-1" role="button" aria-disabled="false">{{ following }} Following</div>
+                </div>
+
+                <div class="col">
+                    <div class="dropdown">
+                        <button class="btn home-btn dropdown-toggle btn-lg" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Edit Profile
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="/edit_picture">Edit Picture</a></li>
+                            <li><a class="dropdown-item" href="/edit_bio">Edit Bio</a></li>
+                            <li><a class="dropdown-item" href="/edit_username">Edit Username</a></li>
+                            <li><a class="dropdown-item" href="/edit_email">Edit Email</a></li>
+                            <li><a class="dropdown-item" href="/edit_password">Edit Password</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br>
+    <hr>
+
+    <section class="posts-section-lg">
+        
+    </section>
+
+    <div class="img-viewer">
+        <img class="post-img" src="" />
+        <div class="post-info">
+            <div class="cancel">
+                <i class="bi bi-x"></i>
+            </div>
+            <div class="profile">
+                <div>
+                    <img class="profile-img" src="static/uploads/{{ user['image'] }}" >
+                    <span id="user-name">{{ user["username"] }}</span>
+                </div>
+                <i class="bi bi-three-dots-vertical"></i>
+            </div>
+            <hr>
+            <div class="caption">
+                <p class="caption-content"></p>
+                <div class="comments"></div>
+            </div>
+            <hr>
+            <div class="likes-container">
+                <div>
+                    <i class="bi bi-heart none"></i><i class="bi bi-heart-fill none"></i><span class="likes-count"></span>
+                </div>
+            </div>
+            <hr>
+            <div class="comment-input">
+                <textarea id="comment" placeholder="Add a comment"></textarea>
+                <div class="post" id="send">Post</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="post-options">
+        <button class="delete delete-sm delete-lg">Delete</button>
+        <hr>
+        <button class="likes">Likes</button>
+        <hr>
+        <button id="post-cancel">Cancel</button>
+    </div>
+
+    <div class="liked-by">
+        <i class="bi bi-x dismiss"></i>
+        <div class="header">
+            Liked By:
+        </div>
+        <hr>
+        <div class="likes-list"></div>
+    </div>
+
+</div>
+
+{% endblock %}

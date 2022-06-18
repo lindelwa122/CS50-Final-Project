@@ -1,0 +1,165 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Tips/Challenges
+{% endblock %}
+
+{% block link1 %}
+    <a href="/logout">Logout</a>
+{% endblock %}
+
+{% block main %}
+
+    {% if route == "tips" %}
+
+        <div class="tips-main">
+                
+            <div class="tips-chal">
+                
+                <form action="/tips" method="post">
+                    {% if message %}
+                        <p class="error-message">{{ message }}</p>
+                    {% endif %}
+                    <div class="mb-3">
+                        <textarea class="form-control" name="tip" placeholder="Write your tip here:"></textarea>
+                    </div>
+                    <input class="btn mb-3" type="submit" value="Share">
+                </form>
+
+                <div class="container">
+
+                    <div class="row">
+
+                        {% for tip in tips %}
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="card">
+                                    <div class="content">
+                                        {{ tip['tip'] }}
+                                    </div>
+                                    <div class="engagement">
+                                        <div class="tip-posted-on">Day {{ started_on | posted_on(tip['posted_on']) }}/{{ challenge | challenge }}</div>
+                                        {% if tip['id'] is liked %}
+                                            <div>
+                                                <i class="bi bi-heart none position-relative"></i>
+                                                <i class="bi bi-heart-fill"></i>
+                                                <i class="bi bi-chat-left position-relative"></i>
+                                                <i class="bi bi-three-dots-vertical"></i>
+                                                <input type="hidden" value="{{ tip['id'] }}">
+                                            </div>
+                                        {% else %}
+                                            <div>
+                                                <i class="bi bi-heart position-relative"></i>
+                                                <i class="bi bi-heart-fill none"></i>
+                                                <i class="bi bi-chat-left position-relative"></i>
+                                                <i class="bi bi-three-dots-vertical"></i>
+                                                <input type="hidden" value="{{ tip['id'] }}">
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="comment-section">
+                                    <div class="add-comment">
+                                        <textarea placeholder="Add a comment"></textarea>
+                                        <div class="post">Post</div>
+                                    </div>
+                                    <hr>
+                                    <div class="comments-container">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+                <div class="action none">
+                    <button class="delete">Delete</button>
+                    <hr>
+                    <button class="likes">Likes</button>
+                    <hr>
+                    <button class="cancel">Cancel</button>
+                </div>
+
+                <div class="liked-by">
+                    <i class="bi bi-x"></i>
+                    <div class="header">
+                        Liked By:
+                    </div>
+                    <hr>
+                    <div class="likes-list"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    {% else %}
+
+        <div class="tips-main">
+                
+            <div class="tips-chal">
+                
+                <form action="/challenges" method="post">
+                    {% if message %}
+                        <p class="error-message">{{ message }}</p>
+                    {% endif %}
+                    <div class="mb-3">
+                        <textarea class="form-control" name="challenge" placeholder="Help others by giving them challenges!"></textarea>
+                    </div>
+                    <input class="btn mb-3" type="submit" value="Share">
+                </form>
+
+                <div class="container">
+
+                    <div class="row">
+
+                        {% for challenge in challenges %}
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="card">
+                                    <div class="content">
+                                        {{ challenge['challenge'] }}
+                                    </div>
+                                    <div class="engagement">
+                                        <div class="tip-posted-on">Day {{ started_on | posted_on(challenge['posted_on']) }}/{{ challenge | challenge }}</div>
+                                        <div>
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                            <input type="hidden" value="{{ challenge['id'] }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+                <div class="action none">
+                    <button class="delete">Delete</button>
+                    <hr>
+                    <button class="partakers">Partakers</button>
+                    <hr>
+                    <button class="cancel">Cancel</button>
+                </div>
+
+                <div class="liked-by">
+                    <i class="bi bi-x"></i>
+                    <div class="header">
+                        People taking this challenge:
+                    </div>
+                    <hr>
+                    <div class="likes-list">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    {% endif %}
+
+{% endblock %}

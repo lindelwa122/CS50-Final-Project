@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %} Register {% endblock %}
+
+{% block link1 %}
+    <a href="/login">Login</a>
+{% endblock %}
+
+{% block main %}
+
+    <div class="login-main">
+        <form action="/register" method="post" class="login-form">
+            <div class="form-container">
+                <h1>Register</h1>
+                {% if message %}
+                    <p class="error-message">{{ message }}</p>
+                {% endif %}
+                <div class="mb-3">
+                    <input autofocus type="text" class="form-control input" name="username" placeholder="Username">
+                </div>
+                <div class="mb-3">
+                    <input autofocus type="email" class="form-control input" name="email" placeholder="Email">
+                </div>
+                <div class="mb-3">
+                    <input autofocus type="password" class="form-control input" name="password" placeholder="Password">
+                </div>
+                <div class="mb-3">
+                    <input autofocus type="password" class="form-control input" name="confirmation" placeholder="Confirm Password">
+                </div>
+                <input type="submit" value="REGISTER" class="btn btn-submit">
+                <p>Already Registered? <a href="/login">Login</a></p>
+            </div>
+        </form>
+        <div class="text">
+            {% if error_message == "password" %}
+                <p>Make your password stronger Champ!</p>
+                <img height="500px" src="static/images/inky-safety-1.png">
+            {% elif error_message == "missing" %}
+                <p>Oopsie! Seems like you forgot something.</p>
+                <img height="500px" src="static/images/pablo-787.png">
+            {% elif error_message == "email" %}
+                <p>Triple check your email Champ!</p>
+                <img height="500px" src="static/images/inky-safety-1.png">
+            {% elif error_message == "exists" %}
+                <p>Sorry Champ! Choose another one.</p>
+                <img height="500px" src="static/images/buddy_no_message.gif">
+            {% elif error_message == "match" %}
+                <p>Oopsie!</p>
+                <img height="500px" src="static/images/flame-1757.png">
+            {% else %}
+                <p>We all have dreams and we can<br>all make them true<br>Register to begin your journey<br>Let's walk together</p>
+            {% endif %}
+        </div>
+    </div>
+    
+{% endblock %}

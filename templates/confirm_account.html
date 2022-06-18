@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Confirm Account
+{% endblock %}
+
+{% block link1 %}
+    <a href="/login">Login</a>
+{% endblock %}
+
+{% block link2 %}
+    <a href="/register">Register</a>
+{% endblock %}
+
+{% block main %}
+    <div class="login-main">
+        <form action="/confirm_account" method="post" class="login-form">
+            <div class="form-container">
+                <h1>Confirm Email</h1>
+                <p style="color: forestgreen">We have sent a code to your email.<br>Use it to complete your registration.<br>Check your spam folder as well.</p>
+                <div class="mb-3">
+                    <input autofocus type="number" class="form-control input" name="code" placeholder="123456" min="100000" max="999999">
+                </div>
+                <input type="submit" value="CONFIRM" class="btn btn-submit">
+                <p><a href="/resend_code">Resend Code</a></p>
+                {% if message %}
+                    <p class="error-message">{{ message }}</p>
+                {% endif %}
+            </div>
+        </form>
+        <div class="text">
+            {% if error_message == "missing" %}
+                <p>Oopsie! Seems like you forgot something.</p>
+                <img height="500px" src="static/images/pablo-787.png">
+            {% elif error_message == "match" %}
+                <p>Oopsie!</p>
+                <img height="500px" src="static/images/flame-1757.png">
+            {% else %}
+                <p>We all have dreams and we can<br>all make them true<br>Confirm you account to begin your journey<br>Let's walk together</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

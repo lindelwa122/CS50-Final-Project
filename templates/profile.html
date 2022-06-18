@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Set Up Profile
+{% endblock %}
+
+{% block link1 %}
+    <a href="/login">Login</a>
+{% endblock %}
+
+{% block main %}
+
+    <div class="login-main">
+        <form action="/profile" method="post" class="login-form" enctype="multipart/form-data">
+            {% if message %}
+                    <p class="error-message">{{ message }}</p>
+            {% endif %}
+            <p class="warning"></p>
+            <label class="bio-text"><div>Bio:</div><div><p class="result"></p></div></label>
+            <div class="mb-3">
+                <textarea name="bio" class="form-control input set-bio" placeholder="Tell us more about yourself (Optional)"></textarea>
+            </div>
+            <input type="submit" class="btn btn-submit" value="SUBMIT">
+        </form>
+
+        <div class="text">
+            {% if error_message == "match" %}
+                <p>Oopsie! Image is not valid.</p>
+                <img height="500px" src="static/images/flame-1757.png">
+            {% else %}
+                <p>A journey of a thousand miles<br>begins with a single step.<br>Start your journey with us now.</p>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
+

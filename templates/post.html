@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %} Post {% endblock %}
+
+{% block link1 %}
+    <a href="/logout">Logout</a>
+{% endblock %}
+
+{% block main %}
+
+    <div class="login-main">
+        <form action="/post" method="post" enctype="multipart/form-data" class="login-form">
+            {% if message %}
+                <p class="error-message">{{ message }}</p>
+            {% endif %}
+            <div class="mb-3">
+                <textarea class="caption-textarea" placeholder="Caption" name="caption"></textarea>
+            </div>
+            <label>Profile Picture:</label>
+            <div class="mb-3">
+                <input type="file" class="form-control input" accept=".png, .jpg, .jpeg" name="file" id="file-input">
+            </div>
+            <input type="hidden" name="x" value="none" id="x-axis">
+            <input type="hidden" name="y" value="none" id="y-axis">
+            <input type="hidden" name="width" value="none" id="width">
+            <input type="hidden" name="height" value="none" id="height">
+            <div class="box-2">
+                <div class="result"></div>
+            </div>
+            <!-- input file -->
+            <div>
+                <div class="options hide">
+                    <!--<label> Width</label>-->
+                    <input type="hidden" class="img-w" value="300" min="100" max="1200" />
+                </div>
+            </div>
+            <input type="submit" class="btn btn-submit" value="POST">
+        </form>
+
+        <div class="text">
+
+            {% if error_message == "missing" %}
+                <p>Oopsie! Seems like you forgot something.</p>
+                <img height="500px" src="static/images/pablo-787.png">
+
+            {% elif error_message == "match" %}
+                <p>Oopsie!</p>
+                <img height="500px" src="static/images/flame-1757.png">
+
+            {% else %}
+                <img height="500px" src="static/images/edit.gif">
+            {% endif %}
+        </div>
+
+    </div>
+
+{% endblock %}

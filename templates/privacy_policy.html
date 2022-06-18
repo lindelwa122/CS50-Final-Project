@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block link1 %}
+    <a href="/authors">About the Authors</a>
+{% endblock %}
+
+{% block main %}
+
+    <div class="privacy-wrapper">
+
+        <h4 class="header">PRIVACY POLICY</h4>
+
+        <section class="personal-info">
+
+            <p class="sub-heading">PERSONAL INFORMATION WE COLLECT</p>
+
+            <p>
+                When you create an account we collect your email, password, and some information about your goal. This is done to help you reach others with similar journeys easily and make your journey more interesting and easier to walk. We also store sessions to keep you logged in longer and to personalize your experience. About sensitive information like emails, we do not share this information with anyone. The reasons we collect your email are, that we need to ensure that you only create one account, make it possible for you to change your password, and for us to remind you in case you get off track.
+            </p>
+            
+        </section>
+
+        <section class="about-passwords">
+
+            <p class="sub-heading">WHAT ABOUT PASSWORDS.</p>
+
+            <p>
+                Your passwords are stored safely in our database and THERE IS NO WAY that we or someone can get hold of them. Your passwords are hashed by Werkzeug Security before they are stored in our database. If you want to read more about them and understand how this work, you can click this link <a target="_blank" href="https://werkzeug.palletsprojects.com/en/2.1.x/utils/">Utilities — Werkzeug Documentation (2.1.x) (palletsprojects.com)</a>.
+            </p>
+            
+        </section>
+
+        <section class="other">
+
+            <p class="sub-heading">OTHER INFORMATION WE SHARE</p>
+
+            <p>
+                We share information about your account to help others learn from you and interact with you. This includes your profile picture, username, bio, people you follow, tips, challenges, posts, comments, and likes. None of the above is shared with third parties.
+            </p>
+
+        </section>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block link1 %}
+    <a href="/logout">Logout</a>
+{% endblock %}
+
+{% block main %}
+
+    <div class="container search-container">
+        <div class="row">
+
+            <div class="col-lg-6 col-md-6 col-sm-12 search-wrapper">
+
+                <section class="search">
+        
+                    <div class="search-bar">
+                        <input type="text" class="search-info" placeholder="Search" name="search">
+                        <i class="bi bi-search"></i>
+                    </div>
+                    
+                </section>
+            
+                <section class="display">
+                    
+                </section>
+                
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12 search-main none">
+
+                <section>
+                                            
+                    <div class="container">
+                        <div class="row v-align-center-1">
+                            <div class="col-4 v-align-center-2">
+                                <img class="profile-img" src="" alt="profile image" />
+                            </div>
+                            <div class="col-8 v-align-center-2 text-truncate">
+                                <h2 class="day-on"></h2><span class="hours-completed"></span>
+                            </div>
+                        </div>
+                    </div>
+    
+                </section>
+    
+                <section class="user-info text-truncate">
+                    <span class="username"></span><br>
+                    <span class="bio"></span>
+                </section>
+    
+                <br>
+    
+                <section class="challenge text-truncate">
+                    <p class="challenge-text"></p>
+                </section>
+    
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6 text-truncate">
+                                <a class="btn btn-primary home-btn follow" tabindex="-1" role="button" aria-disabled="false"></a>
+                            </div>
+    
+                            <div class="col-6 text-truncate">
+                                <a href="#" class="btn btn-primary home-btn followers" tabindex="-1" role="button" aria-disabled="false"></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    
+                <br>
+                <hr>
+    
+                <section class="posts-section">
+            
+                </section>
+    
+            </div>
+            
+        </div>
+    </div>
+
+{% endblock %}

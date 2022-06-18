@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit Profile
+{% endblock %}
+
+{% block link1 %}
+    <a href="/login">Login</a>
+{% endblock %}
+
+{% block link2 %}
+    <a href="/register">Register</a>
+{% endblock %}
+
+{% block main %}
+
+    {% if method == "forgot_password" %}
+
+        <div class="login-main">
+
+            <form action="/forgot_password" method="post" class="login-form">
+                <div class="form-container">
+                    <h1>Reset Password</h1>
+                    <div class="mb-3">
+                        <input type="email" class="form-control input" name="email" placeholder="Email">
+                    </div>
+                    <input type="submit" value="CONTINUE" class="btn btn-submit">
+                    {% if message %}
+                        <p class="error-message">{{ message }}</p>
+                    {% endif %}
+                </div>
+            </form>
+
+            <div class="text">
+                {% if error_message == "missing" %}
+                    <p>Oopsie! Seems like you forgot something.</p>
+                    <img height="500px" src="static/images/pablo-787.png">
+                {% elif error_message == "exists" %}
+                    <p>Oopsie daisy. Email doesn't exist!</p>
+                    <img height="500px" src="static/images/buddy_no_message.gif">
+                {% elif error_message == "match" %}
+                    <p>Oopsie!</p>
+                    <img height="500px" src="static/images/flame-1757.png">
+                {% else %}
+                    <p>We all have dreams and we can<br>all make them true<br>Reset your password to continue your journey<br>Let's walk together</p>
+                {% endif %}
+            </div>
+            
+        </div>
+
+    {% elif method == "reset_password" %}
+
+        <div class="login-main">
+
+            <form action="/reset_password" method="post" class="login-form">
+                <div class="form-container">
+                    <h1>Reset Password</h1>
+                    <p style="color: forestgreen">We have sent a code to your email.<br>Use it to confirm your email.<br>Check your spam folder as well.</p>
+                    <div class="mb-3">
+                        <input autofocus type="number" class="form-control input" name="code" placeholder="123456" min="100000" max="999999">
+                    </div>
+                    <div class="mb-3">
+                        <input autofocus type="password" class="form-control input" name="password" placeholder="New Password">
+                    </div>
+                    <div class="mb-3">
+                        <input autofocus type="password" class="form-control input" name="confirmation" placeholder="Confirm Password">
+                    </div>
+                    <input type="submit" value="SUBMIT" class="btn btn-submit">
+                    {% if message %}
+                        <p class="error-message">{{ message }}</p>
+                    {% endif %}
+                    <p>Want to login now? <a href="/login">Login</a></p>
+                </div>
+            </form>
+
+            <div class="text">
+                {% if error_message == "missing" %}
+                    <p>Oopsie! Seems like you forgot something.</p>
+                    <img height="500px" src="static/images/pablo-787.png">
+                {% elif error_message == "exists" %}
+                    <p>Sorry Champ! Choose another one.</p>
+                    <img height="500px" src="static/images/buddy_no_message.gif">
+                {% elif error_message == "match" %}
+                    <p>Oopsie!</p>
+                    <img height="500px" src="static/images/flame-1757.png">
+                {% elif error_message == "password" %}
+                    <p>Make your password stronger Champ!</p>
+                    <img height="500px" src="static/images/inky-safety-1.png">
+                {% else %}
+                    <p>We all have dreams and we can<br>all make them true<br>Reset your password to continue your journey<br>Let's walk together</p>
+                {% endif %}
+            </div>
+
+        </div>
+    {% endif %}
+
+{% endblock %}

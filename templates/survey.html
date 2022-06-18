@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Survey
+{% endblock %}
+
+{% block main %}
+
+    <div class="login-main">
+
+        <form class="login-form" action="/survey" method="post">
+            <label class="bold">Name of your journey:</label>
+            <input type="text" class="form-control" name="name" placeholder="For example: Code">
+
+            <br>
+
+            <label class="bold">Category:</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="category" value="Sport" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Sport
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="category" value="Academics" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Academics
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="category" value="Technology" id="flexRadioDefault3">
+                <label class="form-check-label" for="flexRadioDefault3">
+                    Technology
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="category" value="Business" id="flexRadioDefault4">
+                <label class="form-check-label" for="flexRadioDefault4">
+                    Business
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="category" value="Lifestyle" id="flexRadioDefault5">
+                <label class="form-check-label" for="flexRadioDefault5">
+                    Lifestyle
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="category" value="Health" id="flexRadioDefault6">
+                <label class="form-check-label" for="flexRadioDefault6">
+                    Health
+                </label>
+            </div>
+
+            <br>
+
+            <label class="form-label bold">Days you are willing to dedicate</label>
+            <select class="form-select" name="challenge">
+                <option value="1">50 Days</option>
+                <option value="2">75 Days</option>
+                <option value="3">100 Days</option>
+            </select>
+
+            <br>
+
+            <label class="form-label bold">Hours willing to dedicate in a day:</label>
+            <select  class="form-select" name="freq">
+                <option value="1" selected>1 Hour</option>
+                <option value="2"> 2 Hours</option>
+                <option value="3"> 3 Hours</option>
+                <option value="4"> 4 Hours</option>
+                <option value="5"> 5 Hours</option>
+                <option value="6"> 6 Hours</option>
+                <option value="7"> 7 Hours</option>
+                <option value="8"> 8 Hours</option>
+                <option value="9"> 9 Hours</option>
+                <option value="10"> 10 Hours</option>
+                <option value="11"> 11 Hours</option>
+                <option value="12"> 12 Hours</option>
+            </select>
+
+            <br>
+
+            {% if message %}
+                <p class="error-message">{{ message }}</p>
+            {% endif %}
+
+            <input class="btn btn-submit" value="Submit" type="submit">
+        </form>
+        
+    </div>
+
+{% endblock %}
